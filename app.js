@@ -1,5 +1,5 @@
 // Set constraints for the video stream
-var constraints = { video: { width: {
+var constraints = { video: { facingMode: "environment",width: {
       max: 640,
     },
     height: {
@@ -13,7 +13,7 @@ function cameraStart() {
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
-        track = stream.getTracks()[0];
+        window.stream = stream;
         cameraView.srcObject = stream;
     })
     .catch(function(error) {
